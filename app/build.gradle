@@ -1,0 +1,87 @@
+apply plugin: 'com.android.application'
+android {
+    compileSdkVersion 26
+    buildToolsVersion "25.0.3"
+    defaultConfig {
+        applicationId "com.example.jiayin.helpfordemo"
+        minSdkVersion 11
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+
+        // Move the tests to tests/java, tests/res, etc...
+        instrumentTest.setRoot('tests')
+
+        // Move the build types to build-types/<type>
+        // For instance, build-types/debug/java, build-types/debug/AndroidManifest.xml, ...
+        // This moves them out of them default location under src/<type>/... which would
+        // conflict with src/ being used by the main source set.
+        // Adding new build types or product flavors should be accompanied
+        // by a similar customization.
+        debug.setRoot('build-types/debug')
+        release.setRoot('build-types/release')
+    }
+    //为了解决部分第三方库重复打包了META-INF的问题
+    packagingOptions {
+        exclude 'META-INF/LICENSE.txt'
+        exclude 'META-INF/NOTICE.txt'
+    }
+}
+repositories {
+    flatDir {
+        dirs 'libs' //就是你放aar的目录地址
+    }
+}
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    // LeanCloud 基础包
+    //初始化leanColud
+    //初始化发短信
+    compile name: 'SMSSDK-3.0.0', ext: 'aar'
+    compile name: 'SMSSDKGUI-3.0.0', ext: 'aar'
+    compile project(':timeselector')
+    compile project(':easeui')
+    compile project(':tastytoast')
+    compile project(':refresh')
+    compile project(':filtermenu')
+    compile project(':imagepicker')
+    compile 'com.android.support:appcompat-v7:25.3.1'
+    compile 'cn.leancloud.android:avoscloud-sdk:v3.+'
+    compile 'cn.leancloud.android:avoscloud-statistics:v3.+'
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
+    compile 'com.android.support:design:25.3.1'
+    compile 'com.jakewharton:butterknife:7.0.1'
+    compile 'de.hdodenhof:circleimageview:2.1.0'
+    compile 'com.github.bumptech.glide:glide:3.7.0'
+    compile 'com.android.support:cardview-v7:25.3.1'
+    compile 'com.android.support:recyclerview-v7:25.3.1'
+    compile 'com.nineoldandroids:library:2.4.0'
+    testCompile 'junit:junit:4.12'
+}
+//// LeanCloud 基础包
+//compile 'cn.leancloud.android:avoscloud-sdk:v3.+'
+//compile 'cn.leancloud.android:avoscloud-statistics:v3.+'
+////初始化leanColud
+////初始化发短信
+//compile name: 'SMSSDK-3.0.0', ext: 'aar'
+//compile name: 'SMSSDKGUI-3.0.0', ext: 'aar'
+//compile 'com.android.support.constraint:constraint-layout:1.0.2'
+//compile 'com.android.support:appcompat-v7:25.3.1'
+//compile 'com.android.support:design:25.3.1'
+//compile 'com.jakewharton:butterknife:7.0.1'
+//testCompile 'junit:junit:4.12'

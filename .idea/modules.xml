@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/HelpForDemo.iml" filepath="$PROJECT_DIR$/HelpForDemo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/easeui/easeui.iml" filepath="$PROJECT_DIR$/easeui/easeui.iml" />
+      <module fileurl="file://$PROJECT_DIR$/filtermenu/filtermenu.iml" filepath="$PROJECT_DIR$/filtermenu/filtermenu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/imagepicker/imagepicker.iml" filepath="$PROJECT_DIR$/imagepicker/imagepicker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/refresh/refresh.iml" filepath="$PROJECT_DIR$/refresh/refresh.iml" />
+      <module fileurl="file://$PROJECT_DIR$/tastytoast/tastytoast.iml" filepath="$PROJECT_DIR$/tastytoast/tastytoast.iml" />
+      <module fileurl="file://$PROJECT_DIR$/timeselector/timeselector.iml" filepath="$PROJECT_DIR$/timeselector/timeselector.iml" />
+    </modules>
+  </component>
+</project>

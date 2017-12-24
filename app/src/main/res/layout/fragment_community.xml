@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:background="@color/main"
+        android:elevation="6dp">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:text="@string/community"
+            android:textColor="@color/white"
+            android:textSize="20dp"
+            android:visibility="visible" />
+    </RelativeLayout>
+
+    <com.cjj.MaterialRefreshLayout
+        android:id="@+id/refresh"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:overlay="false"
+        app:progress_backgroud_color="#FFFAFAFA"
+        app:progress_colors="@array/material_colors"
+        app:progress_show_arrow="true"
+        app:progress_show_circle_backgroud="true"
+        app:wave_color="#20ff2020"
+        app:wave_height_type="normal"
+        app:wave_show="true">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_community_list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+        </android.support.v7.widget.RecyclerView>
+        <com.linroid.filtermenu.library.FilterMenuLayout
+            android:id="@+id/filter_menu"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="8dp"
+            app:fm_expandedRadius="96dp"
+            app:fm_collapsedRadius="24dp"
+            app:fm_centerBottom="50dp"
+            app:fm_centerRight="50dp"
+            app:fm_primaryColor="#ff37aa4a"
+            app:fm_primaryDarkColor="#ff20622b">
+        </com.linroid.filtermenu.library.FilterMenuLayout>
+    </com.cjj.MaterialRefreshLayout>
+
+</LinearLayout>

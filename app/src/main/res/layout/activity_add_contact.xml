@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/white"
+    tools:context=".chat.activity.AddContactActivity">
+
+    <include layout="@layout/toolbar"/>
+
+    <EditText
+        android:id="@+id/et_add_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/bg_edittext"
+        android:hint="输入您想添加好友的ID"
+        android:paddingBottom="12dp"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:paddingTop="12dp"
+        android:textSize="@dimen/font_middle" />
+
+    <RelativeLayout
+        android:id="@+id/rl_add"
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:duplicateParentState="true"
+        android:visibility="gone"
+        android:paddingTop="10dp"
+        android:paddingLeft="10dp"
+        android:layout_margin="10dp">
+
+        <com.example.jiayin.helpfordemo.utils.view.CircleImageView
+            android:id="@+id/iv_add_photo"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/default_head" />
+
+        <TextView
+            android:id="@+id/tv_add_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@id/iv_add_photo"
+            android:text="名称"
+            android:textSize="20sp" />
+
+        <Button
+            android:id="@+id/bt_add_add"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/white"
+            android:backgroundTint="@color/main"
+            android:textSize="@dimen/font_middle"
+            android:text="添加" />
+    </RelativeLayout>
+
+
+</LinearLayout>

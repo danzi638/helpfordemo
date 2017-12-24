@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/item_main"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp"
+    android:layout_weight="1"
+    card_view:cardCornerRadius="3dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="10dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_you_want_thing"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:singleLine="true"
+                android:text="请求物品:"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <include layout="@layout/common_black_line" />
+
+            <TextView
+                android:id="@+id/tv_endlocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:singleLine="true"
+                android:text="物品所在地:"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <include layout="@layout/common_black_line" />
+
+            <TextView
+                android:id="@+id/tv_startlocation"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:singleLine="true"
+                android:text="收货地点:"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+
+            <include layout="@layout/common_black_line" />
+
+            <TextView
+                android:id="@+id/tv_money"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:singleLine="true"
+                android:text="悬赏金额:"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+            <include layout="@layout/common_black_line" />
+
+            <TextView
+                android:id="@+id/tv_enddate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="10dp"
+                android:singleLine="true"
+                android:text="期限:"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <include layout="@layout/common_shu_black_line" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_truename"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:singleLine="true"
+                android:text="联系人:"
+                android:textColor="@color/black"
+                android:textSize="16sp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+
+                android:layout_margin="2dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_jiedan"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/main"
+                    android:text="接单"
+                    android:textColor="@color/white" />
+
+                <Button
+                    android:id="@+id/btn_chat"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/blue"
+                    android:text="私聊"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="2dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btn_detail"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:backgroundTint="@color/main"
+                    android:text="详情"
+                    android:textColor="@color/white"
+                    android:visibility="gone"/>
+            </LinearLayout>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|bottom"
+                android:singleLine="true"
+                android:text="发布日期"
+                android:textSize="11sp" />
+            <TextView
+                android:id="@+id/tv_createtime"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal|bottom"
+                android:singleLine="true"
+                android:text="发布日期:XXXX-XX-XX"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_statu_image"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="right|top"
+        android:src="@drawable/status_1" />
+</android.support.v7.widget.CardView>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="10dp">
+
+    <com.example.jiayin.helpfordemo.utils.view.CircleImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/civ_attavr"
+        android:src="@drawable/default_head"/>
+    <LinearLayout
+        android:paddingLeft="15dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <TextView
+                android:id="@+id/tv_author"
+                android:textSize="20dp"
+                android:textColor="@color/main"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="nick"/>
+        </LinearLayout>
+        <TextView
+            android:id="@+id/tv_comment"
+            android:layout_marginTop="3dp"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="comment"/>
+        <TextView
+            android:id="@+id/tv_createtime"
+            android:layout_marginTop="5dp"
+            android:textSize="14dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="2017-9-18 22:21"/>
+    </LinearLayout>
+</LinearLayout>

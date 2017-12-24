@@ -1,0 +1,10 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context="cn.leancloud.leanstoragegettingstarted.PrefectInformationActivity">
+    <item
+        android:id="@+id/backup"
+        android:icon="@drawable/icon_select"
+        android:title="@string/prefectinformation_select"
+        app:showAsAction="always"/>
+</menu>

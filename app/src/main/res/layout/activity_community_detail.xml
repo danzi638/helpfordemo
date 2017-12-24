@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/ll_main"
+    tools:context=".community.activity.CommunityDetailActivity">
+
+    <include layout="@layout/toolbar" />
+
+    <ScrollView
+        android:id="@+id/sv_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="文章标题"
+                    android:textColor="@color/black"
+                    android:textSize="25dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="5dp">
+
+                    <TextView
+                        android:id="@+id/tv_createtime"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="2017-09-18 10:38" />
+
+                    <TextView
+                        android:id="@+id/tv_author"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:paddingLeft="10dp"
+                        android:text="陈佳音" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tv_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingMultiplier="1.5"
+                    android:text="这是一个内容"
+                    android:textColor="@color/black"
+                    android:textSize="25dp" />
+
+                <ImageView
+                    android:id="@+id/iv_image1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp" />
+
+                <ImageView
+                    android:id="@+id/iv_image2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+
+                    />
+
+                <ImageView
+                    android:id="@+id/iv_image3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+
+                    />
+            </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:background="@color/line">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:paddingLeft="15dp"
+                    android:text="评论区"
+                    android:textSize="16dp" />
+            </RelativeLayout>
+
+            <TextView
+                android:id="@+id/tv_comment_shafa"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="评论一下，抢沙发~"
+                android:textSize="20dp"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center_horizontal"/>
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+    <include layout="@layout/common_line" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:src="@color/bg_color">
+
+        <ImageView
+            android:id="@+id/iv_comment_up"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:src="@drawable/comment_up" />
+        <ImageView
+            android:id="@+id/iv_comment_down"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="15dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/comment_down"
+            android:visibility="gone"/>
+        <ImageView
+            android:id="@+id/iv_say"
+            android:layout_width="210dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="50dp"
+            android:src="@drawable/comment" />
+
+        <ImageView
+            android:id="@+id/iv_share"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:src="@drawable/comment_share" />
+
+        <EditText
+            android:id="@+id/et_comment"
+            android:layout_width="245dp"
+            android:layout_height="35dp"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="50dp"
+            android:background="@drawable/comment_edit"
+            android:hint="说点什么吧..."
+            android:paddingLeft="25dp"
+            android:textColor="@color/font_color"
+            android:textSize="16dp"
+            android:visibility="gone" />
+
+        <Button
+            android:id="@+id/btn_commit"
+            android:layout_width="70dp"
+            android:layout_height="45dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="15dp"
+            android:backgroundTint="@color/main"
+            android:text="发布"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            android:visibility="gone" />
+    </RelativeLayout>
+</LinearLayout>

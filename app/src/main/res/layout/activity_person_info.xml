@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical"
+    tools:context=".my.activity.PersonInfoActivity">
+
+    <include layout="@layout/toolbar" />
+
+
+    <FrameLayout
+        android:id="@+id/fl_avatar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@color/white"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/icon_avatar"
+            android:drawablePadding="5dp"
+            android:gravity="center|left"
+            android:padding="16dp"
+            android:text="用户头像" />
+
+        <com.example.jiayin.helpfordemo.utils.view.CircleImageView
+            android:id="@+id/iv_atatar"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center_vertical|right"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="30dp"
+            android:layout_marginTop="10dp"
+            android:src="@drawable/default_head" />
+    </FrameLayout>
+
+    <include layout="@layout/common_line" />
+
+    <FrameLayout
+        android:id="@+id/fl_nick"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/my_nick"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/ic_right_arrow"
+            android:gravity="center|left"
+            android:padding="16dp"
+            android:text="昵称" />
+
+        <TextView
+            android:id="@+id/tv_nick"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="clip_vertical|right"
+            android:layout_marginRight="40dp"
+            android:gravity="center"
+            android:text="还未填写该信息，快填写吧~"
+            android:textColor="@color/font_color" />
+    </FrameLayout>
+
+    <include layout="@layout/common_line" />
+
+    <FrameLayout
+        android:id="@+id/fl_phone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/my_telephone"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/ic_right_arrow"
+            android:gravity="center|left"
+            android:padding="16dp"
+            android:text="联系方式" />
+
+        <TextView
+            android:id="@+id/tv_phone"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="clip_vertical|right"
+            android:layout_marginRight="40dp"
+            android:gravity="center"
+            android:text="还未填写该信息，快填写吧~"
+            android:textColor="@color/font_color" />
+    </FrameLayout>
+
+    <include layout="@layout/common_line" />
+
+    <FrameLayout
+        android:id="@+id/fl_sex"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/my_sex"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/ic_right_arrow"
+            android:gravity="center|left"
+            android:padding="16dp"
+            android:text="性别" />
+
+        <TextView
+            android:id="@+id/tv_sex"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="clip_vertical|right"
+            android:layout_marginRight="40dp"
+            android:gravity="center"
+            android:text="还未填写该信息，快填写吧~"
+            android:textColor="@color/font_color" />
+    </FrameLayout>
+    <include layout="@layout/common_line" />
+
+    <FrameLayout
+        android:id="@+id/fl_birthday"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:drawableLeft="@drawable/my_birthday"
+            android:drawablePadding="5dp"
+            android:drawableRight="@drawable/ic_right_arrow"
+            android:gravity="center|left"
+            android:padding="16dp"
+            android:text="出生日期" />
+
+        <TextView
+            android:id="@+id/tv_birthday"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="clip_vertical|right"
+            android:layout_marginRight="40dp"
+            android:gravity="center"
+            android:text="还未填写该信息，快填写吧~"
+            android:textColor="@color/font_color" />
+    </FrameLayout>
+</LinearLayout>
