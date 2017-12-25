@@ -75,8 +75,8 @@ public class EaseUserUtils {
                 @Override
                 public void done(AVObject avObject, AVException e) {
                     if (e == null) {
-                        String path = avObject.getAVFile("image") == null ? "" : avObject.getAVFile("image").getUrl();
-                        if (path.equals("")){
+                        String path = avObject == null ? "" : avObject.getAVFile("image").getUrl();
+                        if ("".equals(path) || path == null){
                             Glide.with(context).load(R.drawable.ease_default_avatar).into(imageView);
                         }else {
                             Glide.with(context).load(path).into(imageView);

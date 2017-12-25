@@ -19,6 +19,7 @@ import com.example.jiayin.helpfordemo.chat.model.bean.InvationInfo;
 import com.example.jiayin.helpfordemo.utils.Constant;
 import com.hyphenate.chat.EMClient;
 import com.hyphenate.exceptions.HyphenateException;
+import com.sdsmdg.tastytoast.TastyToast;
 
 import java.util.List;
 
@@ -47,7 +48,7 @@ public class InviteActivity extends BaseActivity {
                             @Override
                             public void run() {
                                 // 页面发生变化
-                                Toast.makeText(InviteActivity.this, "接受了邀请", Toast.LENGTH_SHORT).show();
+                                TastyToast.makeText(InviteActivity.this,"接受了邀请",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
 
                                 // 刷新页面
                                 refresh();
@@ -60,7 +61,7 @@ public class InviteActivity extends BaseActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(InviteActivity.this, "接受邀请失败", Toast.LENGTH_SHORT).show();
+                                TastyToast.makeText(InviteActivity.this,"接受邀请失败",TastyToast.LENGTH_SHORT,TastyToast.ERROR);
                             }
                         });
                     }
@@ -83,8 +84,7 @@ public class InviteActivity extends BaseActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(InviteActivity.this, "拒绝成功了", Toast.LENGTH_SHORT).show();
-
+                                TastyToast.makeText(InviteActivity.this,"拒绝成功了",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
                                 // 刷新页面
                                 refresh();
                             }
@@ -95,7 +95,7 @@ public class InviteActivity extends BaseActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(InviteActivity.this, "拒绝失败了", Toast.LENGTH_SHORT).show();
+                                TastyToast.makeText(InviteActivity.this,"拒绝失败了",TastyToast.LENGTH_SHORT,TastyToast.ERROR);
                             }
                         });
                     }
@@ -121,8 +121,7 @@ public class InviteActivity extends BaseActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(InviteActivity.this, "接受邀请", Toast.LENGTH_SHORT).show();
-
+                                TastyToast.makeText(InviteActivity.this,"接受邀请",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
                                 // 刷新页面
                                 refresh();
                             }
@@ -132,7 +131,7 @@ public class InviteActivity extends BaseActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(InviteActivity.this, "接受邀请失败", Toast.LENGTH_SHORT).show();
+                                TastyToast.makeText(InviteActivity.this,"接受邀请失败",TastyToast.LENGTH_SHORT,TastyToast.ERROR);
                             }
                         });
                     }
@@ -158,14 +157,20 @@ public class InviteActivity extends BaseActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(InviteActivity.this, "拒绝邀请", Toast.LENGTH_SHORT).show();
-
+                                TastyToast.makeText(InviteActivity.this,"拒绝邀请",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
                                 // 刷新页面
                                 refresh();
                             }
                         });
                     } catch (HyphenateException e) {
                         e.printStackTrace();
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                TastyToast.makeText(InviteActivity.this,"拒绝邀请失败",TastyToast.LENGTH_SHORT,TastyToast.ERROR);
+                            }
+                        });
+
                     }
                 }
             });
@@ -189,13 +194,19 @@ public class InviteActivity extends BaseActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(InviteActivity.this, "接受申请", Toast.LENGTH_SHORT).show();
+                                TastyToast.makeText(InviteActivity.this,"接受申请",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
 
                                 refresh();
                             }
                         });
                     } catch (HyphenateException e) {
                         e.printStackTrace();
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                TastyToast.makeText(InviteActivity.this,"接受申请失败",TastyToast.LENGTH_SHORT,TastyToast.ERROR);
+                            }
+                        });
                     }
                 }
             });
@@ -219,7 +230,7 @@ public class InviteActivity extends BaseActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(InviteActivity.this, "拒绝申请", Toast.LENGTH_SHORT).show();
+                                TastyToast.makeText(InviteActivity.this,"拒绝申请",TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
 
                                 refresh();
                             }
@@ -230,7 +241,7 @@ public class InviteActivity extends BaseActivity {
                         runOnUiThread(new Runnable() {
                             @Override
                             public void run() {
-                                Toast.makeText(InviteActivity.this, "拒绝申请失败", Toast.LENGTH_SHORT).show();
+                                TastyToast.makeText(InviteActivity.this,"拒绝申请失败",TastyToast.LENGTH_SHORT,TastyToast.ERROR);
                             }
                         });
                     }
