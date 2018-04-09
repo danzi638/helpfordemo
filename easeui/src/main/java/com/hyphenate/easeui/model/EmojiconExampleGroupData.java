@@ -7,7 +7,7 @@ import com.hyphenate.easeui.domain.EaseEmojiconGroupEntity;
 import java.util.Arrays;
 
 /**
- * Created by crx on 2017/7/5.
+ * Created by cjy on 2017/7/5.
  */
 
 public class EmojiconExampleGroupData {

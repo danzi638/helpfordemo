@@ -35,4 +35,6 @@ public class Constant {
     public static final String IMAGE_PATH_1 = "image1";
     public static final String IMAGE_PATH_2 = "image2";
     public static final String IMAGE_PATH_3 = "image3";
+    public static final String COMMENT_COUNT = "commentcount";
+
 }

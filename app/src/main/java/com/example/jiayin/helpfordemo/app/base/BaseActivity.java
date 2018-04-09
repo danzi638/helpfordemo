@@ -1,6 +1,9 @@
 package com.example.jiayin.helpfordemo.app.base;
 
+import android.content.Context;
 import android.content.Intent;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 
 import com.example.jiayin.helpfordemo.R;
 import com.example.jiayin.helpfordemo.utils.permission.PermissionsManager;
@@ -51,5 +54,11 @@ public class BaseActivity extends SwipeBackAppCompatActivity {
         super.onBackPressed();
         this.overridePendingTransition(R.anim.slide_right_in, R.anim.slide_right_out);
     }
-
+    public void hideKeyboard() {
+        View viewFocus = this.getCurrentFocus();
+        if (viewFocus != null) {
+            InputMethodManager imManager = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+            imManager.hideSoftInputFromWindow(viewFocus.getWindowToken(), 0);
+        }
+    }
 }

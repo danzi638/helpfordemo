@@ -144,11 +144,13 @@ public class EditorActivity extends BaseActivity {
 
                     isPass((int) avObject.get("ispass"));
 
-                    if (String.valueOf(avObject.get("truename")).equals("")) {
+                    if ("".equals(String.valueOf(avObject.get("truename"))) || "null".equals(String.valueOf(avObject.get("truename")))
+                    ||String.valueOf(avObject.get("truename"))== null) {
                         tvTruename.setText("还未填写该信息，快填写吧~");
                         tvTruename.setTextColor(R.color.font_color);
                     }
-                    if (String.valueOf(avObject.get("idCard")).equals("")) {
+                    if ("".equals(String.valueOf(avObject.get("idCard"))) || "null".equals(String.valueOf(avObject.get("idCard")))
+                            ||String.valueOf(avObject.get("idCard"))== null) {
                         tvIdcard.setText("还未填写该信息，快填写吧~");
                         tvIdcard.setTextColor(R.color.font_color);
                     }
@@ -194,10 +196,10 @@ public class EditorActivity extends BaseActivity {
         String truename = tvTruename.getText().toString().trim();
         String idcard = tvIdcard.getText().toString().trim();
         if (truename.equals("审核中") || truename.equals("未通过审核") ||
-                truename.equals("还未填写该信息，快填写吧~") || truename.equals("")) {
+                truename.equals("还未填写该信息，快填写吧~") || truename.equals("") || truename.equals("null")) {
             editorNum = 50;
         } else if (idcard.equals("审核中") || idcard.equals("未通过审核") ||
-                idcard.equals("还未填写该信息，快填写吧~") || idcard.equals("")) {
+                idcard.equals("还未填写该信息，快填写吧~") || idcard.equals("") || truename.equals("null")) {
             editorNum = 100;
         } else {
             editorNum = 250;

@@ -19,6 +19,7 @@ import com.cjj.MaterialRefreshListener;
 import com.example.jiayin.helpfordemo.R;
 import com.example.jiayin.helpfordemo.app.base.BaseFragment;
 import com.example.jiayin.helpfordemo.helpfor.adapter.HelpForListAdapter;
+import com.example.jiayin.helpfordemo.utils.OftenUtils;
 import com.sdsmdg.tastytoast.TastyToast;
 
 import java.util.ArrayList;
@@ -98,9 +99,19 @@ public class HelpForFragment extends BaseFragment {
             @Override
             public void done(List<AVObject> list, AVException e) {
                 if (e == null) {
-                    Log.e(TAG, "done: " + list.size());
+//                    Log.e(TAG, "done: " + list.size());
+                    for (AVObject avobjcet : list) {
+                        String endDate = avobjcet.get("endDate").toString();
+                        if (OftenUtils.timeValue(endDate) <= 0) {
+                            AVObject order_detail = AVObject.createWithoutData("order_message", avobjcet.getObjectId());
+                            // 修改 content
+                            order_detail.put("status",5);
+                            // 保存到云端
+                            order_detail.saveInBackground();
+                        }
+                    }
                     mList.addAll(list);
-                    Log.e(TAG, "done: " + mList.size());
+//                    Log.e(TAG, "done: " + mList.size());
 
 
                     helpForListAdapter.changeStatus();

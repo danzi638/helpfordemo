@@ -3,6 +3,7 @@ package com.example.jiayin.helpfordemo.community.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
+import com.avos.avoscloud.AVQuery;
+import com.avos.avoscloud.FindCallback;
 import com.bumptech.glide.Glide;
 import com.example.jiayin.helpfordemo.R;
 import com.example.jiayin.helpfordemo.community.activity.CommunityDetailActivity;
@@ -20,6 +24,8 @@ import com.sdsmdg.tastytoast.TastyToast;
 
 import java.util.Date;
 import java.util.List;
+
+import static com.bumptech.glide.gifdecoder.GifHeaderParser.TAG;
 
 /**
  * Created by jiayin on 2017/9/10.
@@ -52,14 +58,16 @@ public class ComunityListAdapter extends RecyclerView.Adapter<ComunityListAdapte
         final String image1 = mList.get(position).getAVFile("image1") == null ? "" : (String) mList.get(position).getAVFile("image1").getUrl();
         final String image2 = mList.get(position).getAVFile("image2") == null ? "" : (String) mList.get(position).getAVFile("image2").getUrl();
         final String image3 = mList.get(position).getAVFile("image3") == null ? "" : (String) mList.get(position).getAVFile("image3").getUrl();
+        final Integer comment_count = (Integer) mList.get(position).get("comment_count");
 
         holder.mTv_title.setText(title);
         holder.mTv_author.setText(userid);
         holder.mTv_createtime.setText(createAt);
+        holder.mTv_comment.setText(comment_count.toString() + "评");
         if (!image1.equals("")) {
             Glide.with(mContext).load(image1).into(holder.mIv_image1);
         }else {
-            Glide.with(mContext).load(R.drawable.icon_avatar).into(holder.mIv_image1);
+            Glide.with(mContext).load(R.drawable.icon_default_page).into(holder.mIv_image1);
         }
 
         holder.mLl_news_list.setOnClickListener(new View.OnClickListener() {
@@ -74,8 +82,9 @@ public class ComunityListAdapter extends RecyclerView.Adapter<ComunityListAdapte
                 intent.putExtra(Constant.IMAGE_PATH_1,image1);
                 intent.putExtra(Constant.IMAGE_PATH_2,image2);
                 intent.putExtra(Constant.IMAGE_PATH_3,image3);
+                intent.putExtra(Constant.COMMENT_COUNT,comment_count.toString());
                 mContext.startActivity(intent);
-                TastyToast.makeText(mContext,"点击了"+position,TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
+//                TastyToast.makeText(mContext,"点击了"+position,TastyToast.LENGTH_SHORT,TastyToast.SUCCESS);
             }
         });
     }
@@ -84,6 +93,8 @@ public class ComunityListAdapter extends RecyclerView.Adapter<ComunityListAdapte
     public int getItemCount() {
         return mList.size();
     }
+
+
 
     class CommunityListHolder extends RecyclerView.ViewHolder{
         private LinearLayout mLl_news_list;

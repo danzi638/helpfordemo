@@ -252,6 +252,7 @@ public class HelpFragment extends BaseFragment implements PoiSearch.OnPoiSearchL
             public void onClick(View view) {
                 if (onSearch) {
                     showTitle();
+
                 }
             }
         });

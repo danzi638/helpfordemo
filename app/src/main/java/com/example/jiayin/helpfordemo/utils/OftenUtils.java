@@ -52,20 +52,28 @@ public class OftenUtils {
         switch (status) {
             case 0:
                 return "未支付";
+            //未支付
             case 1:
                 return "已支付";
+            //已经支付
             case 2:
                 return "已接单";
+            //已经接单
             case 3:
                 return "已完成";
+            //已经完成
             case 4:
                 return "已过期";
+            //未支付已过期
             case 5:
                 return "无人接单";
+            //已支付已过期
             case 6:
                 return "已违约";
+            //已接单未在规定时间完成
             case 7:
                 return "待确认";
+            //已接单已完成待确认
             default:
                 return null;
         }

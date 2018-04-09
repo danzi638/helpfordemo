@@ -32,6 +32,9 @@ import com.sdsmdg.tastytoast.TastyToast;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
+/**
+ *
+ */
 public class LoginActivity extends BaseActivity {
 
     @Bind(R.id.login_progress)
@@ -130,8 +133,6 @@ public class LoginActivity extends BaseActivity {
         if (cancel) {
             focusView.requestFocus();
         } else {
-//            dialog.show();
-//            dialog.setMessage("正在登陆");
             AVUser.logInInBackground(username, password, new LogInCallback<AVUser>() {
                 @Override
                 public void done(AVUser avUser, AVException e) {
@@ -145,7 +146,6 @@ public class LoginActivity extends BaseActivity {
                         startActivity(intent);
 
                     } else {
-//                        showProgress(false);
                         Log.e(TAG, "login: " + "username:" + username + " password:" + password);
                         TastyToast.makeText(getApplicationContext(), "出错了" + e.toString() , Toast.LENGTH_SHORT, TastyToast.ERROR);
                     }

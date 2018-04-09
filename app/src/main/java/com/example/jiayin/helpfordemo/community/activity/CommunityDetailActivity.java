@@ -1,12 +1,15 @@
 package com.example.jiayin.helpfordemo.community.activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -18,6 +21,7 @@ import com.avos.avoscloud.AVException;
 import com.avos.avoscloud.AVObject;
 import com.avos.avoscloud.AVQuery;
 import com.avos.avoscloud.FindCallback;
+import com.avos.avoscloud.GetCallback;
 import com.avos.avoscloud.SaveCallback;
 import com.bumptech.glide.Glide;
 import com.example.jiayin.helpfordemo.R;
@@ -33,6 +37,8 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import cn.sharesdk.onekeyshare.OnekeyShare;
+
+import static com.bumptech.glide.gifdecoder.GifHeaderParser.TAG;
 
 public class CommunityDetailActivity extends BaseActivity {
 
@@ -55,24 +61,27 @@ public class CommunityDetailActivity extends BaseActivity {
     ImageView ivImage3;
     @Bind(R.id.rv_comment)
     RecyclerView rvComment;
-    @Bind(R.id.iv_say)
-    ImageView ivSay;
-    @Bind(R.id.iv_share)
-    ImageView ivShare;
+//    @Bind(R.id.iv_say)
+//    ImageView ivSay;
+//    @Bind(R.id.iv_share)
+//    ImageView ivShare;
     @Bind(R.id.et_comment)
     EditText etComment;
     @Bind(R.id.btn_commit)
     Button btnCommit;
     @Bind(R.id.sv_main)
     ScrollView svMain;
-    @Bind(R.id.iv_comment_up)
-    ImageView ivCommentUp;
-    @Bind(R.id.iv_comment_down)
-    ImageView ivCommentDown;
+//    @Bind(R.id.iv_comment_up)
+//    ImageView ivCommentUp;
+//    @Bind(R.id.iv_comment_down)
+//    ImageView ivCommentDown;
     @Bind(R.id.ll_main)
     LinearLayout llMain;
     @Bind(R.id.tv_comment_shafa)
     TextView tvCommentShafa;
+    @Bind(R.id.ll_comment)
+    LinearLayout llComment;
+
 
     private String objectid;
     private String userid;
@@ -83,6 +92,7 @@ public class CommunityDetailActivity extends BaseActivity {
     private String image2;
     private String image3;
     private String comment;
+    private String comment_count;
 
     private CommentListAdapter commentListAdapter;
     private List<AVObject> mList = new ArrayList<>();
@@ -95,6 +105,19 @@ public class CommunityDetailActivity extends BaseActivity {
         toolbar.setTitle("文章");
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        toolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.action_search:
+                        showShare();
+                        break;
+                }
+                return true;
+            }
+        });
+
 
         GridLayoutManager layoutManager = new GridLayoutManager(CommunityDetailActivity.this, 1);
         rvComment.setLayoutManager(layoutManager);
@@ -116,6 +139,12 @@ public class CommunityDetailActivity extends BaseActivity {
         image1 = getIntent().getStringExtra(Constant.IMAGE_PATH_1);
         image2 = getIntent().getStringExtra(Constant.IMAGE_PATH_2);
         image3 = getIntent().getStringExtra(Constant.IMAGE_PATH_3);
+        comment_count = getIntent().getStringExtra(Constant.COMMENT_COUNT);
+        if ("0".equals(comment_count)) {
+            tvCommentShafa.setVisibility(View.VISIBLE);
+        }else{
+            tvCommentShafa.setVisibility(View.GONE);
+        }
         refresh();
 
     }
@@ -137,24 +166,24 @@ public class CommunityDetailActivity extends BaseActivity {
     }
 
     private void initListener() {
-        ivSay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showEdit();
-            }
-        });
-        ivCommentDown.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                hintEdit();
-            }
-        });
-        ivCommentUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                showEdit();
-            }
-        });
+//        ivSay.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                showEdit();
+//            }
+//        });
+//        ivCommentDown.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                hintEdit();
+//            }
+//        });
+//        ivCommentUp.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                showEdit();
+//            }
+//        });
         btnCommit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -171,7 +200,13 @@ public class CommunityDetailActivity extends BaseActivity {
                         @Override
                         public void done(AVException e) {
                             if (e == null) {
+                                getCommunityMessage(objectid);
                                 refresh();
+                                llComment.setFocusable(true);
+                                llComment.setFocusableInTouchMode(true);
+                                etComment.setText("");
+                                etComment.clearFocus();
+                                hideKeyboard();
                                 TastyToast.makeText(getApplicationContext(), "评论成功", TastyToast.LENGTH_SHORT, TastyToast.SUCCESS);
                             } else {
                                 TastyToast.makeText(getApplicationContext(), "出错了" + e.toString(), TastyToast.LENGTH_SHORT, TastyToast.ERROR);
@@ -181,10 +216,25 @@ public class CommunityDetailActivity extends BaseActivity {
                 }
             }
         });
-        ivShare.setOnClickListener(new View.OnClickListener() {
+//        ivShare.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                showShare();
+//            }
+//        });
+    }
+
+    private void getCommunityMessage(String objectid) {
+        AVQuery<AVObject> community_message = new AVQuery<>("community_message");
+        community_message.getInBackground(objectid, new GetCallback<AVObject>() {
             @Override
-            public void onClick(View view) {
-                showShare();
+            public void done(AVObject avObject, AVException e) {
+                Integer count = (Integer) avObject.get("comment_count") + 1;
+                AVObject community_message = AVObject.createWithoutData("community_message", avObject.getObjectId());
+                // 修改 content
+                community_message.put("comment_count",count);
+                // 保存到云端
+                community_message.saveInBackground();
             }
         });
     }
@@ -235,23 +285,23 @@ public class CommunityDetailActivity extends BaseActivity {
         });
     }
 
-    private void hintEdit() {
-        ivSay.setVisibility(View.VISIBLE);
-        ivShare.setVisibility(View.VISIBLE);
-        btnCommit.setVisibility(View.GONE);
-        etComment.setVisibility(View.GONE);
-        ivCommentUp.setVisibility(View.VISIBLE);
-        ivCommentDown.setVisibility(View.GONE);
-    }
-
-    private void showEdit() {
-        ivSay.setVisibility(View.GONE);
-        ivShare.setVisibility(View.GONE);
-        btnCommit.setVisibility(View.VISIBLE);
-        etComment.setVisibility(View.VISIBLE);
-        ivCommentUp.setVisibility(View.GONE);
-        ivCommentDown.setVisibility(View.VISIBLE);
-    }
+//    private void hintEdit() {
+//        ivSay.setVisibility(View.VISIBLE);
+//        ivShare.setVisibility(View.VISIBLE);
+//        btnCommit.setVisibility(View.GONE);
+//        etComment.setVisibility(View.GONE);
+//        ivCommentUp.setVisibility(View.VISIBLE);
+//        ivCommentDown.setVisibility(View.GONE);
+//    }
+//
+//    private void showEdit() {
+//        ivSay.setVisibility(View.GONE);
+//        ivShare.setVisibility(View.GONE);
+//        btnCommit.setVisibility(View.VISIBLE);
+//        etComment.setVisibility(View.VISIBLE);
+//        ivCommentUp.setVisibility(View.GONE);
+//        ivCommentDown.setVisibility(View.VISIBLE);
+//    }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -260,4 +310,12 @@ public class CommunityDetailActivity extends BaseActivity {
         }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_share,menu);
+        return true;
+    }
+
+
 }

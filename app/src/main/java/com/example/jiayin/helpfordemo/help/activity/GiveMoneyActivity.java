@@ -125,7 +125,7 @@ public class GiveMoneyActivity extends BaseActivity {
                 endDate.setText(" 期限  " + endTime);
 
             }
-        }, getLocalTime(), "2017-12-31 00:00"
+        }, getLocalTime(), "2020-12-31 00:00"
         );
         timeSelector.setMode(TimeSelector.MODE.YMDHM);
         initImagePicker();
@@ -223,7 +223,7 @@ public class GiveMoneyActivity extends BaseActivity {
         end_location = endLocation.getText().toString().trim();
         end_location_detail = endLocationDetail.getText().toString().trim();
         phone_number = phone.getText().toString().trim();
-        String moneys = String.valueOf(money);
+        String moneys = String.valueOf(seekBar.getProgress());
         thing_detail = etGoodDetail.getText().toString().trim();
 
         Log.e(TAG, "commit: " + you_want_thing);
@@ -263,11 +263,11 @@ public class GiveMoneyActivity extends BaseActivity {
             focusView = endLocation;
             cancel = true;
         }
-        if (TextUtil.isEmpty(end_location_detail)) {
-            endLocationDetail.setError(getString(R.string.empty_end_location_detail));
-            focusView = endLocationDetail;
-            cancel = true;
-        }
+//        if (TextUtil.isEmpty(end_location_detail)) {
+//            endLocationDetail.setError(getString(R.string.empty_end_location_detail));
+//            focusView = endLocationDetail;
+//            cancel = true;
+//        }
         if (TextUtil.isEmpty(phone_number)) {
             phone.setError(getString(R.string.empty_phone_number));
             focusView = phone;
@@ -295,7 +295,7 @@ public class GiveMoneyActivity extends BaseActivity {
             order_message.put("endLocation", end_location);
             order_message.put("endLocationDetail", end_location_detail);
             order_message.put("phone", phone_number);
-            order_message.put("money", money);
+            order_message.put("money", seekBar.getProgress());
             order_message.put("endDate", endTime);
             order_message.put("goodDetail", thing_detail);
             order_message.put("truename",truename);
@@ -312,7 +312,7 @@ public class GiveMoneyActivity extends BaseActivity {
                         Intent intent = new Intent(GiveMoneyActivity.this, PayForActivity.class);
                         intent.putExtra(Constant.OBJECT_ID,order_message.getObjectId());
                         Log.e(TAG, "done: " + order_message.getObjectId());
-                        intent.putExtra(Constant.MONEY, money);
+                        intent.putExtra(Constant.MONEY, seekBar.getProgress());
                         startActivity(intent);
                         TastyToast.makeText(getApplicationContext(), "保存成功", Toast.LENGTH_SHORT, TastyToast.SUCCESS);
                         GiveMoneyActivity.this.finish();
