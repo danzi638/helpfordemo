@@ -45,7 +45,12 @@ public class CommentListAdapter extends RecyclerView.Adapter<CommentListAdapter.
         user_detail.getFirstInBackground(new GetCallback<AVObject>() {
             @Override
             public void done(AVObject avObject, AVException e) {
-                Glide.with(mContext).load(avObject.getAVFile("image").getUrl()).into(holder.mCiv_attavr);
+                if (avObject.getAVFile("image") == null) {
+                    Glide.with(mContext).load(R.drawable.default_head).into(holder.mCiv_attavr);
+                }else {
+                    Glide.with(mContext).load(avObject.getAVFile("image").getUrl()).into(holder.mCiv_attavr);
+                }
+
                 holder.mTv_author.setText(avObject.get("nick").toString());
             }
         });

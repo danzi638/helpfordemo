@@ -203,9 +203,9 @@ public class MyFragment extends BaseFragment {
             @Override
             public void done(AVObject avObject, AVException e) {
                 if (e == null) {
-                    userId = (String) avObject.get("nick") == null ? "" : (String) avObject.get("nick");
+                    userId = avObject.get("nick") == null ? "" : (String) avObject.get("nick");
                     nameView.setText(userId);
-                    String path = avObject.getAVFile("image").getUrl() == null ? "" : avObject.getAVFile("image").getUrl();
+                    String path = avObject.getAVFile("image") == null ? "" : avObject.getAVFile("image").getUrl();
                     if (!TextUtil.isEmpty(path)) {
                         Glide.with(mContext).load(path).into(avatar);
                     } else {

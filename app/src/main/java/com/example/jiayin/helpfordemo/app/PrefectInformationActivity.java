@@ -159,8 +159,36 @@ public class PrefectInformationActivity extends BaseActivity {
             @Override
             public void done(AVException e) {
                 if (e == null) {
-                    easeUIregister();
-                    easeUiLogin();
+//                    easeUIregister();
+                    Model.getInstance().getGlobalThreadPool().execute(new Runnable() {
+                        @Override
+                        public void run() {
+
+                            try {
+                                // 去环信服务器注册账号
+                                EMClient.getInstance().createAccount(username, password);
+
+                                // 更新页面显示
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        TastyToast.makeText(getApplicationContext(), "注册成功" , Toast.LENGTH_SHORT, TastyToast.SUCCESS);
+                                        easeUiLogin();
+                                    }
+                                });
+                            } catch (final HyphenateException e) {
+                                e.printStackTrace();
+                                runOnUiThread(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        TastyToast.makeText(getApplicationContext(), "注册失败" + e.toString() , Toast.LENGTH_SHORT, TastyToast.ERROR);
+                                    }
+                                });
+                            }
+                        }
+                    });
+//                    easeUiLogin();
+
                     Intent intent = new Intent(PrefectInformationActivity.this, MainActivity.class);
                     intent.putExtra(Constant.USER_NAME, username);
                     startActivity(intent);
